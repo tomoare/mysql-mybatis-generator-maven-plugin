@@ -25,8 +25,11 @@ public class EntityDtoPlugin extends PluginAdapter {
 
     private IntrospectedTable introspectedTable;
 
+    private String modelPackage;
+
     @Override
     public boolean validate(List<String> warnings) {
+        modelPackage = properties.getProperty("modelPackage");
         return true;
     }
 
@@ -47,7 +50,7 @@ public class EntityDtoPlugin extends PluginAdapter {
 
         topLevelClass.getFields().clear();
 
-        FullyQualifiedJavaType entity = new FullyQualifiedJavaType("com.tomoare.pairs.domain.model." + preTableName);
+        FullyQualifiedJavaType entity = new FullyQualifiedJavaType(modelPackage + preTableName);
         Parameter constractParameter = new Parameter(entity, "entity");
 
         Field entityField = new Field();
