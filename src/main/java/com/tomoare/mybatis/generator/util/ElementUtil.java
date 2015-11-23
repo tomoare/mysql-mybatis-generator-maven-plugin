@@ -1,6 +1,8 @@
 package com.tomoare.mybatis.generator.util;
 
+import java.util.List;
 import org.mybatis.generator.api.dom.xml.Attribute;
+import org.mybatis.generator.api.dom.xml.Element;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
 /**
@@ -21,6 +23,19 @@ public class ElementUtil {
                 Attribute replaceAttr = new Attribute("id", name);
                 answer.getAttributes().set(i, replaceAttr);
                 break;
+            }
+        }
+    }
+
+    public static void removeElement(XmlElement answer, String name) {
+        List<Element> elements = answer.getElements();
+        for (Element element : elements) {
+            if (element instanceof XmlElement) {
+                XmlElement xmlElement = (XmlElement) element;
+                if (name.equals(xmlElement.getName())) {
+                    elements.remove(xmlElement);
+                    break;
+                }
             }
         }
     }
