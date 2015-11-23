@@ -20,8 +20,8 @@ public class ExistByExampleElementGenerator extends SelectByExampleWithoutBLOBsE
         answer.addAttribute(new Attribute("id", //$NON-NLS-1$
                 "existByExample"));
         answer.addAttribute(new Attribute(
-                "resultMap", introspectedTable.getBaseResultMapId())); //$NON-NLS-1$
-        answer.addAttribute(new Attribute("parameterType", "java.lang.Boolean"));
+                "resultType", "java.lang.Boolean")); //$NON-NLS-1$
+        answer.addAttribute(new Attribute("parameterType", fqjt)); //$NON-NLS-1$
 
         context.getCommentGenerator().addComment(answer);
 
